@@ -1,0 +1,19 @@
+---
+- hosts: localhost
+  become: yes
+  vars:
+  - host_ip_address: '10.67.103.10'
+
+  tasks:
+
+    - name: Copy Flask app into place.
+      template:
+        src: /etc/ansible/index.py.j2
+        dest: /opt/www/index.py
+        mode: 0755
+
+    - name: Copy Flask templates into place.
+      copy:
+        src: /etc/ansible/templates
+        dest: /opt/www
+        mode: 0755

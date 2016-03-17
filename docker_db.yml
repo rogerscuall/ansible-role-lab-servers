@@ -1,0 +1,9 @@
+---
+- name: Run a MySQL container
+  docker:
+    image: db:mysql
+    name: db
+    state: running
+    volumes_from: data
+    command: /opt/start-mysql.sh
+    ports: "3306:3306"

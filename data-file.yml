@@ -1,0 +1,3 @@
+---
+- name: copy the Dockerfile
+  copy: src=./data/Dockerfile dest=/home/presidio/docker/provisiong/data/Dockerfile

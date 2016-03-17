@@ -1,0 +1,40 @@
+---
+- hosts: all
+  become: yes
+
+  pre_tasks:
+    - name: Update apt cache if needed.
+      apt: update_cache=yes cache_valid_time=3600
+
+  roles:
+    - role: angstwad.docker_ubuntu
+
+  tasks:
+    - include: setup.yml
+
+- hosts: all
+  tasks:
+    - include: docker_dir.yml
+
+- hosts: web
+  tasks:
+    - include: web-file.yml
+
+- hosts: db
+  tasks:
+    - include: db-file.yml
+
+- hosts: all
+  tasks:
+    - include: data-file.yml
+    - include: docker_file.yml
+
+- hosts: web
+  become: yes
+  tasks:
+    - include: docker_web.yml
+
+- hosts: db
+  become: yes
+  tasks:
+    - include: docker_db.yml

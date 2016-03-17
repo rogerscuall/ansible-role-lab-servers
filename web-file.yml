@@ -1,0 +1,11 @@
+---
+- name: create directories
+  file: path=/home/presidio/docker/provisiong/www/templates state=directory
+
+- name: copy the files for flask
+  copy: src=./www/{{ item }} dest=/home/presidio/docker/provisiong/www/{{ item }}
+  with_items:
+    - Dockerfile
+    - index.py.j2
+    - playbook.yml
+    - 'templates/index.html'

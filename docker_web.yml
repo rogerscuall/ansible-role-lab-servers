@@ -1,0 +1,8 @@
+---
+- name: Run a Flask container.
+  docker:
+    image: www:flask
+    name: www
+    state: running
+    command: python /opt/www/index.py
+    ports: "80:80"

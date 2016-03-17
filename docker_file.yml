@@ -1,0 +1,8 @@
+---
+# Data containers don't need to be running to be utilized.
+
+- name: Run a Data container.
+  docker:
+    image: data:data
+    name: data
+    state: present

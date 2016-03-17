@@ -1,0 +1,7 @@
+---
+- name: copy the files for db
+  copy: src=./db/{{ item }} dest=/home/presidio/docker/provisiong/db/{{ item }}
+  with_items:
+    - Dockerfile
+    - playbook.yml
+    - start-mysql.sh
