@@ -1,0 +1,44 @@
+---
+- hosts: localhost
+  connection: local
+  become: yes
+  roles:
+  - { role: angstwad.docker_ubuntu }
+
+- hosts: localhost
+  connection: local
+  pre_tasks:
+    - name: Add vagrant user to docker group.
+      user:
+       name: naruto
+       groups: docker
+       append: yes
+      become: yes
+
+    - name: Install Pip.
+      apt: name=python-pip state=installed
+      become: yes
+
+    - name: Install Docker Python library.
+      pip: name=docker-py state=present
+      become: yes
+
+  tasks:
+    - name: Build Docker image from Dockerfiles.
+      docker_image:
+        name: test
+        path: '/home/naruto/DevOps/Docker/Ansible-Docker'
+        state: build
+
+    - name: Run the test container.
+      docker:
+        image: test:latest
+        name: test
+        state: running
+
+    - name: Add vagrant user to docker group.
+      user:
+       name: naruto
+       groups: docker
+       append: yes
+      become: yes
