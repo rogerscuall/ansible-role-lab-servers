@@ -1,0 +1,8 @@
+---
+-  name: Create all directories.
+   become: yes
+   file: path=/home/vagrant/{{ item }}
+   with_items:
+     - www
+     - app
+     - db
