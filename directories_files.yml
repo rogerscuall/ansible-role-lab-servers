@@ -1,8 +1,18 @@
 ---
--  name: Create all directories.
+-  name: Create all provisioning directories.
    become: yes
-   file: path=/home/vagrant/{{ item }}
+   file: path=/home/vagrant/provisioning/{{ item }} state=directory mode=0755
    with_items:
      - www
-     - app
+     - data
+     - db
+     
+-  name: Copy files to provisioning directories
+   become: yes
+   copy:
+     src: "{{ item }}"
+     dest: /home/vagrant/provisioning/{{ item }}
+   with_items:
+     - www
+     - data
      - db
