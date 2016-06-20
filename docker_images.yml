@@ -2,7 +2,7 @@
   docker_image:
     name: "{{ item.name }}"
     tag: "{{ item.tag }}"
-    path: "/vagrant/provisioning/{{ item.directory }}" 
+    path: "/home/vagrant/provisioning/{{ item.directory }}" 
     state: present
   with_items:
     - { name: data, tag: "data", directory: data }
