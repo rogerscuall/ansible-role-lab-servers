@@ -26,6 +26,7 @@
 
 - hosts: all
   tasks:
+     - include: directories_files.yml
      - include: docker_images.yml
 
 - hosts: all
