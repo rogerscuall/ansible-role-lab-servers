@@ -10,3 +10,5 @@ web01
 app01
 [db:children]
 db01
+[all:vars]
+username=presidio
