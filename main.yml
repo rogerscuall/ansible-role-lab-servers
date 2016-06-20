@@ -26,6 +26,10 @@
 
 - hosts: all
   tasks:
+     - include: docker_images.yml
+
+- hosts: all
+  tasks:
     - include: data-file.yml
     - include: docker_file.yml
 
