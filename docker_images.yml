@@ -3,7 +3,7 @@
     name: "{{ item.name }}"
     tag: "{{ item.tag }}"
     path: "/vagrant/provisioning/{{ item.directory }}" 
-    state: build
+    state: present
   with_items:
     - { name: data, tag: "data", directory: data }
     - { name: www, tag: "flask", directory: www }
